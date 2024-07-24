@@ -1,0 +1,47 @@
+<!--pages/gou/gou.wxml-->
+<view class="bg-color"></view>
+<view class="car-box">
+  <checkbox-group bindchange="checkboxChange">
+    <view class="row-data" wx:for="{{dataList}}" wx:for-index="index" wx:key="item">
+      <view class="row-btn">
+        <checkbox value="{{item.id}}" checked="{{checked}}" />
+      </view>
+      <view class="row-list" bind:tap="detailClick" data-item="{{item}}">
+        <view class="row-img">
+          <image src="{{item.img}}" mode="aspectFill" />
+        </view>
+        <view class="row-info">
+          <view class="row-text">{{item.content}}</view>
+          <view class="row-price">
+            <view>
+              <text class="row-icon">￥</text>
+              <text class="row-money">{{item.showPrice}}</text>
+            </view>
+            <view>
+              <text class="btn">x{{item.number}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </checkbox-group>
+</view>
+<!-- 结算 -->
+<view class="footer-box">
+  <view>
+    <checkbox-group bindchange="checkboxChangeAll">
+      <label class="level">
+        <checkbox value="all" checked="{{checkAll}}" />全选
+      </label>
+    </checkbox-group>
+  </view>
+  <view class="level">
+    <view>
+      <text>合计：</text>
+      <text class="total-btn row-icon">￥</text>
+      <text class="total-btn row-money">{{totalMoney}}</text>
+    </view>
+    <view class="total-end" bind:tap="totalClick">结 算</view>
+  </view>
+</view>
+
